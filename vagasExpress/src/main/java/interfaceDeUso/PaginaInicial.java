@@ -19,7 +19,7 @@ public class PaginaInicial extends javax.swing.JFrame {
      */
     public PaginaInicial() {
         initComponents();
-        controle = new Principal();
+        controle = new Principal(painelPrincipal); // É preciso passar o painel no construtor por causa da verificação da senha
     }
 
     /**
@@ -147,7 +147,7 @@ public class PaginaInicial extends javax.swing.JFrame {
         IntrPrinc.setText("Digite o ID da vaga:");
 
         VisualVg.setBackground(new java.awt.Color(60, 179, 113));
-        VisualVg.setText("jButton1");
+        VisualVg.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Docs_2_Semestre\\loupe.png")); // NOI18N
 
         javax.swing.GroupLayout paginaPrincipalLayout = new javax.swing.GroupLayout(paginaPrincipal);
         paginaPrincipal.setLayout(paginaPrincipalLayout);
@@ -157,19 +157,19 @@ public class PaginaInicial extends javax.swing.JFrame {
                 .addGroup(paginaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(paginaPrincipalLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addGroup(paginaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(paginaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TitlePag)
                             .addComponent(AdcScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(paginaPrincipalLayout.createSequentialGroup()
                                 .addComponent(IntrPrinc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(IDPrinc)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(VisualVg, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(paginaPrincipalLayout.createSequentialGroup()
                         .addGap(290, 290, 290)
                         .addComponent(BotaoSair, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
             .addGroup(paginaPrincipalLayout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addComponent(BotaoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,7 +189,7 @@ public class PaginaInicial extends javax.swing.JFrame {
                     .addComponent(IntrPrinc)
                     .addComponent(IDPrinc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(VisualVg))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(paginaPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotaoAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -236,7 +236,7 @@ public class PaginaInicial extends javax.swing.JFrame {
         IntrFiltro.setText("Digite o ID da vaga:");
 
         VisualFiltro.setBackground(new java.awt.Color(60, 179, 113));
-        VisualFiltro.setText("jButton1");
+        VisualFiltro.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Docs_2_Semestre\\search.png")); // NOI18N
 
         javax.swing.GroupLayout paginaFiltroLayout = new javax.swing.GroupLayout(paginaFiltro);
         paginaFiltro.setLayout(paginaFiltroLayout);
@@ -266,7 +266,7 @@ public class PaginaInicial extends javax.swing.JFrame {
                     .addGroup(paginaFiltroLayout.createSequentialGroup()
                         .addGap(290, 290, 290)
                         .addComponent(BotaoVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         paginaFiltroLayout.setVerticalGroup(
             paginaFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,8 +285,8 @@ public class PaginaInicial extends javax.swing.JFrame {
                 .addGroup(paginaFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IntrFiltro)
                     .addComponent(IDFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(VisualFiltro))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                    .addComponent(VisualFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(BotaoVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
@@ -369,7 +369,7 @@ public class PaginaInicial extends javax.swing.JFrame {
         paginaAdmLayout.setHorizontalGroup(
             paginaAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paginaAdmLayout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
+                .addContainerGap(139, Short.MAX_VALUE)
                 .addGroup(paginaAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TitleAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -391,6 +391,7 @@ public class PaginaInicial extends javax.swing.JFrame {
         paginaAdc.setPreferredSize(new java.awt.Dimension(700, 600));
 
         jPanel2.setBackground(new java.awt.Color(255, 228, 196));
+        jPanel2.setPreferredSize(new java.awt.Dimension(700, 600));
 
         TitleAdc.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         TitleAdc.setText("Adicione as informações:");
@@ -492,7 +493,7 @@ public class PaginaInicial extends javax.swing.JFrame {
                         .addComponent(BotaoCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(100, 100, 100)
                         .addComponent(BotaoCadastra, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -523,18 +524,22 @@ public class PaginaInicial extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotaoCadastra, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout paginaAdcLayout = new javax.swing.GroupLayout(paginaAdc);
         paginaAdc.setLayout(paginaAdcLayout);
         paginaAdcLayout.setHorizontalGroup(
             paginaAdcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(paginaAdcLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         paginaAdcLayout.setVerticalGroup(
             paginaAdcLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(paginaAdcLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         painelPrincipal.add(paginaAdc, "card5");
@@ -628,7 +633,7 @@ public class PaginaInicial extends javax.swing.JFrame {
                     .addComponent(IntrRmv)
                     .addComponent(IDRmv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RemoveVg))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addComponent(BotaoVoltarRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
@@ -709,7 +714,7 @@ public class PaginaInicial extends javax.swing.JFrame {
                                 .addComponent(SlcHoraEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(SlcValorEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(18, Short.MAX_VALUE))
+                        .addContainerGap(34, Short.MAX_VALUE))
                     .addGroup(paginaEditLayout.createSequentialGroup()
                         .addComponent(IntrEdit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -740,7 +745,7 @@ public class PaginaInicial extends javax.swing.JFrame {
                     .addComponent(IntrEdit)
                     .addComponent(IDEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EditVg))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addComponent(BotaoVoltarEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
@@ -753,14 +758,14 @@ public class PaginaInicial extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+                .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+                .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -806,8 +811,7 @@ public class PaginaInicial extends javax.swing.JFrame {
     }                                              
 
     private void BotaoAdmActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        CardLayout troca = (CardLayout) painelPrincipal.getLayout(); // Vai da pg de Filtro para a pg Principal
-        troca.show(painelPrincipal, "card4");
+        controle.verificaSenha();
     }                                        
 
     private void NomeVgActionPerformed(java.awt.event.ActionEvent evt) {                                       
@@ -860,6 +864,12 @@ public class PaginaInicial extends javax.swing.JFrame {
         } else {
             controle.cadastrarVaga(nome, empresa, area, salario, horario);
             JOptionPane.showMessageDialog(this, "Vaga cadastrada com sucesso!");
+
+            //Limpa os textField após pegar a informação
+            NomeVg.setText("");
+            NomeEmpresa.setText("");
+            SalarioCad.setText("");
+
             CardLayout troca = (CardLayout) painelPrincipal.getLayout();
             troca.show(painelPrincipal, "card4");
         }
