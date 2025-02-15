@@ -5,7 +5,6 @@
 package interfaceDeUso;
 
 import corpoPrograma.Principal;
-import static corpoPrograma.Principal.carregarVagasTabelaFiltrada;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 
@@ -60,6 +59,9 @@ public class PaginaInicial extends javax.swing.JFrame {
         VisualFiltro = new javax.swing.JButton();
         ScrollTable = new javax.swing.JScrollPane();
         TableFiltro = new javax.swing.JTable();
+        labelAreaFiltro = new javax.swing.JLabel();
+        labelTurnoFiltro = new javax.swing.JLabel();
+        labelSalFiltro = new javax.swing.JLabel();
         paginaAdm = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         BotaoAdc = new javax.swing.JButton();
@@ -87,8 +89,6 @@ public class PaginaInicial extends javax.swing.JFrame {
         TexCad = new javax.swing.JTextArea();
         paginaRemove = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        ExibeRmv = new javax.swing.JTextArea();
         BotaoLupaRmv = new javax.swing.JButton();
         SlcAreaRmv = new javax.swing.JComboBox<>();
         SlcHoraRmv = new javax.swing.JComboBox<>();
@@ -98,6 +98,11 @@ public class PaginaInicial extends javax.swing.JFrame {
         IDRmv = new javax.swing.JTextField();
         RemoveVg = new javax.swing.JButton();
         BotaoVoltarRmv = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        TableRmv = new javax.swing.JTable();
+        labelAreaRmv = new javax.swing.JLabel();
+        labelTurnoRvm = new javax.swing.JLabel();
+        labelSalRmv = new javax.swing.JLabel();
         paginaEdit = new javax.swing.JPanel();
         SlcAreaEdit = new javax.swing.JComboBox<>();
         SlcHoraEdit = new javax.swing.JComboBox<>();
@@ -107,9 +112,12 @@ public class PaginaInicial extends javax.swing.JFrame {
         IDEdit = new javax.swing.JTextField();
         EditVg = new javax.swing.JButton();
         BotaoVoltarEdit = new javax.swing.JButton();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        ExibeEdit = new javax.swing.JTextArea();
         BotaoLupaEdit = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TableEdit = new javax.swing.JTable();
+        labelAreaEdt = new javax.swing.JLabel();
+        labelTurnoEdt = new javax.swing.JLabel();
+        labelSalEdt = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -250,17 +258,22 @@ public class PaginaInicial extends javax.swing.JFrame {
                 BotaoLupaActionPerformed(evt);
             }
         });
-        SlcArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Computação", "Direito", "Administração", "Mecânica" }));
 
-        SlcHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manhã", "Tarde", "Noite" }));
+        SlcArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Computação", "Direito", "Administração", "Mecânica" }));
+
+        SlcHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Manhã", "Tarde", "Noite" }));
         SlcHora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SlcHoraActionPerformed(evt);
             }
         });
 
-
-        SlcValor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "500-1000", "1000-1500", "1500-2000", "2000 +" }));
+        SlcValor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "500-1000", "1000-1500", "1500-2000", "2000 +" }));
+        SlcValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SlcValorActionPerformed(evt);
+            }
+        });
 
         BotaoVoltar.setBackground(new java.awt.Color(176, 224, 230));
         BotaoVoltar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -300,55 +313,80 @@ public class PaginaInicial extends javax.swing.JFrame {
         ));
         ScrollTable.setViewportView(TableFiltro);
 
+        labelAreaFiltro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelAreaFiltro.setText("Área :");
+
+        labelTurnoFiltro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelTurnoFiltro.setText("Turno :");
+
+        labelSalFiltro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelSalFiltro.setText("Salário :");
+
         javax.swing.GroupLayout paginaFiltroLayout = new javax.swing.GroupLayout(paginaFiltro);
         paginaFiltro.setLayout(paginaFiltroLayout);
         paginaFiltroLayout.setHorizontalGroup(
             paginaFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paginaFiltroLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(33, 33, 33)
                 .addGroup(paginaFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ScrollTable, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(paginaFiltroLayout.createSequentialGroup()
-                        .addGap(256, 256, 256)
-                        .addComponent(BotaoVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(TitleFiltro)
+                    .addComponent(ScrollTable, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(paginaFiltroLayout.createSequentialGroup()
                         .addComponent(BotaoLupa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(SlcArea, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(paginaFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SlcArea, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelAreaFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(SlcHora, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(paginaFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SlcHora, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelTurnoFiltro))
                         .addGap(18, 18, 18)
-                        .addComponent(SlcValor, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(paginaFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SlcValor, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelSalFiltro)))
                     .addGroup(paginaFiltroLayout.createSequentialGroup()
-                        .addComponent(IntrFiltro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(IDFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addGroup(paginaFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(paginaFiltroLayout.createSequentialGroup()
+                                .addComponent(IntrFiltro)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(IDFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paginaFiltroLayout.createSequentialGroup()
+                                .addGap(257, 257, 257)
+                                .addComponent(BotaoVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(VisualFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 28, Short.MAX_VALUE))
+                .addGap(0, 33, Short.MAX_VALUE))
         );
         paginaFiltroLayout.setVerticalGroup(
             paginaFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paginaFiltroLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(19, 19, 19)
                 .addComponent(TitleFiltro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(paginaFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelAreaFiltro)
+                    .addComponent(labelTurnoFiltro)
+                    .addComponent(labelSalFiltro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(paginaFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoLupa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SlcArea, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SlcHora, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SlcValor, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(ScrollTable, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(paginaFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IntrFiltro)
-                    .addComponent(IDFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(VisualFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ScrollTable, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(paginaFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paginaFiltroLayout.createSequentialGroup()
+                        .addGroup(paginaFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(IntrFiltro)
+                            .addComponent(IDFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14))
+                    .addComponent(VisualFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BotaoVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         painelPrincipal.add(paginaFiltro, "card3");
@@ -623,26 +661,24 @@ public class PaginaInicial extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 228, 196));
 
-        ExibeRmv.setColumns(20);
-        ExibeRmv.setRows(5);
-        jScrollPane6.setViewportView(ExibeRmv);
-
-        BotaoLupaRmv.setText("jButton4");
+        BotaoLupaRmv.setBackground(new java.awt.Color(60, 179, 113));
+        BotaoLupaRmv.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Docs_2_Semestre\\loupe.png")); // NOI18N
         BotaoLupaRmv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotaoLupaRmvActionPerformed(evt);
             }
         });
-        SlcAreaRmv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        SlcHoraRmv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SlcAreaRmv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Computação", "Direito", "Administração", "Mecânica" }));
+
+        SlcHoraRmv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Manhã", "Tarde", "Noite" }));
         SlcHoraRmv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SlcHoraRmvActionPerformed(evt);
             }
         });
 
-        SlcValorRmv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SlcValorRmv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "500-1000", "1000-1500", "1500-2000", "2000 +" }));
 
         TitleRmv.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         TitleRmv.setText("Filtre entre as vagas disponíveis:");
@@ -667,74 +703,102 @@ public class PaginaInicial extends javax.swing.JFrame {
             }
         });
 
+        TableRmv.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nome", "Empresa", "Área", "Salário", "Turno"
+            }
+        ));
+        jScrollPane5.setViewportView(TableRmv);
+
+        labelAreaRmv.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelAreaRmv.setText("Área :");
+
+        labelTurnoRvm.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelTurnoRvm.setText("Turno :");
+
+        labelSalRmv.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelSalRmv.setText("Salário :");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(IntrRmv)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(IDRmv)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(RemoveVg, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(TitleRmv)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(BotaoLupaRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(SlcAreaRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(SlcHoraRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(SlcValorRmv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(284, 284, 284)
-                .addComponent(BotaoVoltarRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BotaoVoltarRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(257, 257, 257))
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(IntrRmv)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(IDRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(RemoveVg, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(BotaoLupaRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(SlcAreaRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelAreaRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(SlcHoraRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelTurnoRvm))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(SlcValorRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelSalRmv))))
+                    .addComponent(TitleRmv))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(TitleRmv)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelAreaRmv)
+                    .addComponent(labelTurnoRvm)
+                    .addComponent(labelSalRmv))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoLupaRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SlcAreaRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SlcHoraRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SlcValorRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(RemoveVg, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(IntrRmv)
                         .addComponent(IDRmv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BotaoVoltarRmv, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout paginaRemoveLayout = new javax.swing.GroupLayout(paginaRemove);
         paginaRemove.setLayout(paginaRemoveLayout);
         paginaRemoveLayout.setHorizontalGroup(
             paginaRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paginaRemoveLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         paginaRemoveLayout.setVerticalGroup(
             paginaRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paginaRemoveLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         painelPrincipal.add(paginaRemove, "card6");
@@ -742,16 +806,16 @@ public class PaginaInicial extends javax.swing.JFrame {
         paginaEdit.setBackground(new java.awt.Color(255, 228, 196));
         paginaEdit.setPreferredSize(new java.awt.Dimension(700, 600));
 
-        SlcAreaEdit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SlcAreaEdit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Computação", "Direito", "Administração", "Mecânica" }));
 
-        SlcHoraEdit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SlcHoraEdit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Manhã", "Tarde", "Noite", " " }));
         SlcHoraEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SlcHoraEditActionPerformed(evt);
             }
         });
 
-        SlcValorEdit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SlcValorEdit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "500-1000", "1000-1500", "1500-2000", "2000 +" }));
 
         TitleEdit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         TitleEdit.setText("Filtre entre as vagas disponíveis:");
@@ -760,7 +824,12 @@ public class PaginaInicial extends javax.swing.JFrame {
         IntrEdit.setText("Digite o ID da vaga:");
 
         EditVg.setBackground(new java.awt.Color(60, 179, 113));
-        EditVg.setText("jButton1");
+        EditVg.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Docs_2_Semestre\\pencil.png")); // NOI18N
+        EditVg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditVgActionPerformed(evt);
+            }
+        });
 
         BotaoVoltarEdit.setBackground(new java.awt.Color(176, 224, 230));
         BotaoVoltarEdit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -771,70 +840,97 @@ public class PaginaInicial extends javax.swing.JFrame {
             }
         });
 
-        ExibeEdit.setColumns(20);
-        ExibeEdit.setRows(5);
-        jScrollPane7.setViewportView(ExibeEdit);
-
-        BotaoLupaEdit.setText("jButton4");
+        BotaoLupaEdit.setBackground(new java.awt.Color(60, 179, 113));
+        BotaoLupaEdit.setIcon(new javax.swing.ImageIcon("C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Docs_2_Semestre\\loupe.png")); // NOI18N
         BotaoLupaEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotaoLupaEditActionPerformed(evt);
             }
         });
 
+        TableEdit.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nome", "Empresa", "Área", "Salário", "Turno"
+            }
+        ));
+        jScrollPane3.setViewportView(TableEdit);
+
+        labelAreaEdt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelAreaEdt.setText("Área :");
+
+        labelTurnoEdt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelTurnoEdt.setText("Turno :");
+
+        labelSalEdt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelSalEdt.setText("Salário :");
+
         javax.swing.GroupLayout paginaEditLayout = new javax.swing.GroupLayout(paginaEdit);
         paginaEdit.setLayout(paginaEditLayout);
         paginaEditLayout.setHorizontalGroup(
             paginaEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paginaEditLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(33, 33, 33)
                 .addGroup(paginaEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paginaEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(paginaEditLayout.createSequentialGroup()
+                            .addComponent(IntrEdit)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(IDEdit)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(EditVg, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(paginaEditLayout.createSequentialGroup()
-                        .addGroup(paginaEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TitleEdit)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(paginaEditLayout.createSequentialGroup()
-                                .addComponent(BotaoLupaEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(SlcAreaEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(SlcHoraEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(SlcValorEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(34, Short.MAX_VALUE))
+                        .addGap(257, 257, 257)
+                        .addComponent(BotaoVoltarEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TitleEdit)
                     .addGroup(paginaEditLayout.createSequentialGroup()
-                        .addComponent(IntrEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(IDEdit)
+                        .addComponent(BotaoLupaEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(EditVg, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(146, 146, 146))))
-            .addGroup(paginaEditLayout.createSequentialGroup()
-                .addGap(284, 284, 284)
-                .addComponent(BotaoVoltarEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(paginaEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SlcAreaEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelAreaEdt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(paginaEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SlcHoraEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelTurnoEdt))
+                        .addGap(18, 18, 18)
+                        .addGroup(paginaEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SlcValorEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelSalEdt))))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         paginaEditLayout.setVerticalGroup(
             paginaEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paginaEditLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(TitleEdit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(7, 7, 7)
+                .addGroup(paginaEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelAreaEdt)
+                    .addComponent(labelTurnoEdt)
+                    .addComponent(labelSalEdt))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(paginaEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoLupaEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SlcAreaEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SlcHoraEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SlcValorEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(paginaEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IntrEdit)
                     .addComponent(IDEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EditVg))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                    .addComponent(EditVg, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BotaoVoltarEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addContainerGap())
         );
 
         painelPrincipal.add(paginaEdit, "card7");
@@ -857,36 +953,8 @@ public class PaginaInicial extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold> 
-    private void BotaoLupaEditActionPerformed(java.awt.event.ActionEvent evt) {                                            
-         // Obter os valores selecionados nos componentes
-    String areaSelecionadaEdit = SlcAreaEdit.getSelectedItem().toString();
-    String horarioSelecionadoEdit = SlcHoraEdit.getSelectedItem().toString();
-    String valorSelecionadoEdit = SlcValorEdit.getSelectedItem().toString();
+    }// </editor-fold>                        
 
-    // Chamar a função que carrega os dados filtrados na tabela
-    //ATENÇÃO AO ESCREVER APOS MUDANCA NA INTERFACE MUDA O TABLEFILTRO POR TABLEEDIT
-    carregarVagasTabelaFiltrada(TableFiltro, areaSelecionadaEdit, horarioSelecionadoEdit, valorSelecionadoEdit);
-    } 
-    private void BotaoLupaActionPerformed(java.awt.event.ActionEvent evt) {                                            
-         // Obter os valores selecionados nos componentes
-    String areaSelecionada = SlcArea.getSelectedItem().toString();
-    String horarioSelecionado = SlcHora.getSelectedItem().toString();
-    String valorSelecionado = SlcValor.getSelectedItem().toString();
-
-    // Chamar a função que carrega os dados filtrados na tabela
-    //ATENÇÃO AO ESCREVER APOS MUDANCA NA INTERFACE MUDA O TABLEFILTRO POR TABLEREMOVE
-    carregarVagasTabelaFiltrada(TableFiltro, areaSelecionada, horarioSelecionado, valorSelecionado);
-    } 
-    private void BotaoLupaRmvActionPerformed(java.awt.event.ActionEvent evt) {                                            
-         // Obter os valores selecionados nos componentes
-    String areaSelecionadaRmv = SlcAreaRmv.getSelectedItem().toString();
-    String horarioSelecionadoRmv = SlcHoraRmv.getSelectedItem().toString();
-    String valorSelecionadoRmv = SlcValorRmv.getSelectedItem().toString();
-
-    // Chamar a função que carrega os dados filtrados na tabela
-    carregarVagasTabelaFiltrada(TableFiltro, areaSelecionadaRmv, horarioSelecionadoRmv, valorSelecionadoRmv);
-    } 
     private void BotaoAlunoActionPerformed(java.awt.event.ActionEvent evt) {                                           
         CardLayout troca = (CardLayout) painelPrincipal.getLayout(); // Vai da pg Principal para a pg de Filtro
         controle.carregarVagasTabela(TableFiltro);
@@ -908,6 +976,7 @@ public class PaginaInicial extends javax.swing.JFrame {
 
     private void BotaoEditarActionPerformed(java.awt.event.ActionEvent evt) {                                            
         CardLayout troca = (CardLayout) painelPrincipal.getLayout();
+        controle.carregarVagasTabela(TableEdit);
         troca.show(painelPrincipal, "card7");
     }                                           
 
@@ -918,6 +987,7 @@ public class PaginaInicial extends javax.swing.JFrame {
 
     private void BotaoRmvActionPerformed(java.awt.event.ActionEvent evt) {                                         
         CardLayout troca = (CardLayout) painelPrincipal.getLayout();
+        controle.carregarVagasTabela(TableRmv);
         troca.show(painelPrincipal, "card6");
     }                                        
 
@@ -1001,6 +1071,45 @@ public class PaginaInicial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                            
 
+    private void BotaoLupaActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // Obter os valores selecionados nos componentes
+        String areaSelecionada = SlcArea.getSelectedItem().toString();
+        String horarioSelecionado = SlcHora.getSelectedItem().toString();
+        String valorSelecionado = SlcValor.getSelectedItem().toString();
+
+        // Chamar a função que carrega os dados filtrados na tabela
+        //ATENÇÃO AO ESCREVER APOS MUDANCA NA INTERFACE MUDA O TABLEFILTRO POR TABLEREMOVE
+        controle.carregarVagasTabelaFiltrada(TableFiltro, areaSelecionada, horarioSelecionado, valorSelecionado);
+    }                                         
+
+    private void BotaoLupaEditActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // Obter os valores selecionados nos componentes
+        String areaSelecionadaEdit = SlcAreaEdit.getSelectedItem().toString();
+        String horarioSelecionadoEdit = SlcHoraEdit.getSelectedItem().toString();
+        String valorSelecionadoEdit = SlcValorEdit.getSelectedItem().toString();
+
+        // Chamar a função que carrega os dados filtrados na tabela
+        controle.carregarVagasTabelaFiltrada(TableEdit, areaSelecionadaEdit, horarioSelecionadoEdit, valorSelecionadoEdit);
+    }                                             
+
+    private void EditVgActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        // TODO add your handling code here:
+    }                                      
+
+    private void SlcValorActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }                                        
+
+    private void BotaoLupaRmvActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        // Obter os valores selecionados nos componentes
+        String areaSelecionadaRmv = SlcAreaRmv.getSelectedItem().toString();
+        String horarioSelecionadoRvm = SlcHoraRmv.getSelectedItem().toString();
+        String valorSelecionadoRmv = SlcValorRmv.getSelectedItem().toString();
+
+        // Chamar a função que carrega os dados filtrados na tabela
+        controle.carregarVagasTabelaFiltrada(TableEdit, areaSelecionadaRmv, horarioSelecionadoRvm, valorSelecionadoRmv);
+    }                                            
+
     /**
      * @param args the command line arguments
      */
@@ -1056,8 +1165,6 @@ public class PaginaInicial extends javax.swing.JFrame {
     private javax.swing.JButton BotaoVoltarEdit;
     private javax.swing.JButton BotaoVoltarRmv;
     private javax.swing.JButton EditVg;
-    private javax.swing.JTextArea ExibeEdit;
-    private javax.swing.JTextArea ExibeRmv;
     private javax.swing.JComboBox<String> HorarioCad;
     private javax.swing.JTextField IDEdit;
     private javax.swing.JTextField IDFiltro;
@@ -1081,7 +1188,9 @@ public class PaginaInicial extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> SlcValor;
     private javax.swing.JComboBox<String> SlcValorEdit;
     private javax.swing.JComboBox<String> SlcValorRmv;
+    private javax.swing.JTable TableEdit;
     private javax.swing.JTable TableFiltro;
+    private javax.swing.JTable TableRmv;
     private javax.swing.JTextArea TexCad;
     private javax.swing.JLabel TitleAdc;
     private javax.swing.JLabel TitleAdm;
@@ -1105,10 +1214,18 @@ public class PaginaInicial extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JLabel labelAreaEdt;
+    private javax.swing.JLabel labelAreaFiltro;
+    private javax.swing.JLabel labelAreaRmv;
+    private javax.swing.JLabel labelSalEdt;
+    private javax.swing.JLabel labelSalFiltro;
+    private javax.swing.JLabel labelSalRmv;
+    private javax.swing.JLabel labelTurnoEdt;
+    private javax.swing.JLabel labelTurnoFiltro;
+    private javax.swing.JLabel labelTurnoRvm;
     private javax.swing.JPanel paginaAdc;
     private javax.swing.JPanel paginaAdm;
     private javax.swing.JPanel paginaEdit;
