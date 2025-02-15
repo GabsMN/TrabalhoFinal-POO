@@ -1,4 +1,3 @@
-
 package corpoPrograma;
 
 import java.awt.CardLayout;
@@ -101,66 +100,67 @@ public class Principal {
             e.printStackTrace();
         }
     }
-public static void carregarVagasTabelaFiltrada(JTable tabela, String area, String horario, String valor) {
-    DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
-    modelo.setRowCount(0); // Limpa a tabela antes de inserir os dados
 
-    // Inicializa os valores mínimo e máximo de acordo com o intervalo selecionado
-    int valorMinimo = Integer.MIN_VALUE;
-    int valorMaximo = Integer.MAX_VALUE;
+    public static void carregarVagasTabelaFiltrada(JTable tabela, String area, String horario, String valor) {
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        modelo.setRowCount(0); // Limpa a tabela antes de inserir os dados
 
-    // Define o intervalo de valores com base na seleção do usuário
-    if (valor.equals("500-1000")) {
-        valorMinimo = 500;
-        valorMaximo = 1000;
-    } else if (valor.equals("1000-1500")) {
-        valorMinimo = 1000;
-        valorMaximo = 1500;
-    } else if (valor.equals("1500-2000")) {
-        valorMinimo = 1500;
-        valorMaximo = 2000;
-    } else if (valor.equals("2000 +")) {
-        valorMinimo = 2000;
-        valorMaximo = Integer.MAX_VALUE; // Para valores acima de 2000
-    }
+        // Inicializa os valores mínimo e máximo de acordo com o intervalo selecionado
+        int valorMinimo = Integer.MIN_VALUE;
+        int valorMaximo = Integer.MAX_VALUE;
 
-    try (BufferedReader leitor = new BufferedReader(new FileReader(nome_arquivo))) {
-        String linha;
+        // Define o intervalo de valores com base na seleção do usuário
+        if (valor.equals("500-1000")) {
+            valorMinimo = 500;
+            valorMaximo = 1000;
+        } else if (valor.equals("1000-1500")) {
+            valorMinimo = 1000;
+            valorMaximo = 1500;
+        } else if (valor.equals("1500-2000")) {
+            valorMinimo = 1500;
+            valorMaximo = 2000;
+        } else if (valor.equals("2000 +")) {
+            valorMinimo = 2000;
+            valorMaximo = Integer.MAX_VALUE; // Para valores acima de 2000
+        }
 
-        while ((linha = leitor.readLine()) != null) {
-            String[] dados = linha.split(",");  // Divide a linha pelas vírgulas
+        try (BufferedReader leitor = new BufferedReader(new FileReader(nome_arquivo))) {
+            String linha;
 
-            if (dados.length >= 6) {  // Verifica se há pelo menos 6 colunas de dados
-                String areaArquivo = dados[3].trim();    // A área está na coluna 4 (índice 3)
-                String valorArquivoStr = dados[4].trim();   // O valor está na coluna 5 (índice 4)
-                String horarioArquivo = dados[5].trim(); // O horário está na coluna 6 (índice 5)
+            while ((linha = leitor.readLine()) != null) {
+                String[] dados = linha.split(",");  // Divide a linha pelas vírgulas
 
-                // Converte o valor do arquivo para um número inteiro
-                Integer valorArquivo = null;
-                try {
-                    valorArquivo = Integer.parseInt(valorArquivoStr);  // Converte o valor para inteiro
-                } catch (NumberFormatException e) {
-                    System.out.println("Erro ao tentar converter o valor para número: " + valorArquivoStr);
-                    continue;  // Se não for possível converter, pula essa linha
-                }
+                if (dados.length >= 6) {  // Verifica se há pelo menos 6 colunas de dados
+                    String areaArquivo = dados[3].trim();    // A área está na coluna 4 (índice 3)
+                    String valorArquivoStr = dados[4].trim();   // O valor está na coluna 5 (índice 4)
+                    String horarioArquivo = dados[5].trim(); // O horário está na coluna 6 (índice 5)
 
-                // Comparação de valor: verifica se o valor do arquivo está dentro do intervalo selecionado
-                boolean valorMatch = valorArquivo >= valorMinimo && valorArquivo <= valorMaximo;
+                    // Converte o valor do arquivo para um número inteiro
+                    Integer valorArquivo = null;
+                    try {
+                        valorArquivo = Integer.parseInt(valorArquivoStr);  // Converte o valor para inteiro
+                    } catch (NumberFormatException e) {
+                        System.out.println("Erro ao tentar converter o valor para número: " + valorArquivoStr);
+                        continue;  // Se não for possível converter, pula essa linha
+                    }
 
-                // Comparação de área: caso o filtro seja "Todos", aceita qualquer área
-                boolean areaMatch = area.equals("Todos") || area.equals(areaArquivo);
+                    // Comparação de valor: verifica se o valor do arquivo está dentro do intervalo selecionado
+                    boolean valorMatch = valor.equals("Todos") || valorArquivo >= valorMinimo && valorArquivo <= valorMaximo;
 
-                // Comparação de horário: caso o filtro seja "Todos", aceita qualquer horário
-                boolean horarioMatch = horario.equals("Todos") || horario.equals(horarioArquivo);
+                    // Comparação de área: caso o filtro seja "Todos", aceita qualquer área
+                    boolean areaMatch = area.equals("Todos") || area.equals(areaArquivo);
 
-                // Se a área, o valor e o horário corresponderem, adiciona à tabela
-                if (areaMatch && valorMatch && horarioMatch) {
-                    modelo.addRow(dados);  // Adiciona a linha inteira à tabela se corresponder
+                    // Comparação de horário: caso o filtro seja "Todos", aceita qualquer horário
+                    boolean horarioMatch = horario.equals("Todos") || horario.equals(horarioArquivo);
+
+                    // Se a área, o valor e o horário corresponderem, adiciona à tabela
+                    if (areaMatch && valorMatch && horarioMatch) {
+                        modelo.addRow(dados);  // Adiciona a linha inteira à tabela se corresponder
+                    }
                 }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
     }
-}
 }
