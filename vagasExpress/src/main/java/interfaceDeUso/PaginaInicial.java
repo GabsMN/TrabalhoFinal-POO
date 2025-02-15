@@ -118,6 +118,22 @@ public class PaginaInicial extends javax.swing.JFrame {
         labelAreaEdt = new javax.swing.JLabel();
         labelTurnoEdt = new javax.swing.JLabel();
         labelSalEdt = new javax.swing.JLabel();
+        paginaVagaPesquisada = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        nomeVg = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        empresaVg = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        areaVg = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        turnoVg = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        salarioVg = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        descricaoVg = new javax.swing.JTextArea();
+        BotaoVoltarVg = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -260,6 +276,11 @@ public class PaginaInicial extends javax.swing.JFrame {
         });
 
         SlcArea.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Computação", "Direito", "Administração", "Mecânica" }));
+        SlcArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SlcAreaActionPerformed(evt);
+            }
+        });
 
         SlcHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Manhã", "Tarde", "Noite" }));
         SlcHora.addActionListener(new java.awt.event.ActionListener() {
@@ -308,7 +329,7 @@ public class PaginaInicial extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Empresa", "Área", "Salário", "Turno"
+                "ID", "Nome", "Empresa", "Área", "Salário (R$)", "Turno"
             }
         ));
         ScrollTable.setViewportView(TableFiltro);
@@ -711,7 +732,7 @@ public class PaginaInicial extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Empresa", "Área", "Salário", "Turno"
+                "ID", "Nome", "Empresa", "Área", "Salário (R$)", "Turno"
             }
         ));
         jScrollPane5.setViewportView(TableRmv);
@@ -856,7 +877,7 @@ public class PaginaInicial extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Empresa", "Área", "Salário", "Turno"
+                "ID", "Nome", "Empresa", "Área", "Salário (R$)", "Turno"
             }
         ));
         jScrollPane3.setViewportView(TableEdit);
@@ -934,6 +955,130 @@ public class PaginaInicial extends javax.swing.JFrame {
         );
 
         painelPrincipal.add(paginaEdit, "card7");
+
+        paginaVagaPesquisada.setBackground(new java.awt.Color(255, 228, 196));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Vaga Pesquisada :");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setText("Nome :");
+
+        nomeVg.setEditable(false);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setText("Empresa :");
+
+        empresaVg.setEditable(false);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setText("Área :");
+
+        areaVg.setEditable(false);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setText("Turno :");
+
+        turnoVg.setEditable(false);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setText("Salário :");
+
+        salarioVg.setEditable(false);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel8.setText("Descrição :");
+
+        descricaoVg.setEditable(false);
+        descricaoVg.setColumns(20);
+        descricaoVg.setRows(5);
+        jScrollPane6.setViewportView(descricaoVg);
+
+        BotaoVoltarVg.setBackground(new java.awt.Color(176, 224, 230));
+        BotaoVoltarVg.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BotaoVoltarVg.setText("Voltar");
+        BotaoVoltarVg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoVoltarVgActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout paginaVagaPesquisadaLayout = new javax.swing.GroupLayout(paginaVagaPesquisada);
+        paginaVagaPesquisada.setLayout(paginaVagaPesquisadaLayout);
+        paginaVagaPesquisadaLayout.setHorizontalGroup(
+            paginaVagaPesquisadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paginaVagaPesquisadaLayout.createSequentialGroup()
+                .addGroup(paginaVagaPesquisadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(paginaVagaPesquisadaLayout.createSequentialGroup()
+                        .addGap(274, 274, 274)
+                        .addComponent(jLabel2))
+                    .addGroup(paginaVagaPesquisadaLayout.createSequentialGroup()
+                        .addGap(289, 289, 289)
+                        .addComponent(BotaoVoltarVg, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(paginaVagaPesquisadaLayout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addGroup(paginaVagaPesquisadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(paginaVagaPesquisadaLayout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(areaVg, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paginaVagaPesquisadaLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(empresaVg))
+                            .addGroup(paginaVagaPesquisadaLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nomeVg, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(paginaVagaPesquisadaLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(turnoVg))
+                            .addGroup(paginaVagaPesquisadaLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(salarioVg))
+                            .addGroup(paginaVagaPesquisadaLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(125, Short.MAX_VALUE))
+        );
+        paginaVagaPesquisadaLayout.setVerticalGroup(
+            paginaVagaPesquisadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paginaVagaPesquisadaLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGroup(paginaVagaPesquisadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(nomeVg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(paginaVagaPesquisadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(empresaVg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(paginaVagaPesquisadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(areaVg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(paginaVagaPesquisadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(salarioVg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(paginaVagaPesquisadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(turnoVg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(paginaVagaPesquisadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(BotaoVoltarVg, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
+        );
+
+        painelPrincipal.add(paginaVagaPesquisada, "card8");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1046,7 +1191,7 @@ public class PaginaInicial extends javax.swing.JFrame {
         String salario = SalarioCad.getText();
         String horario = (String) HorarioCad.getSelectedItem();
         String descricao = TexCad.getText();
-        if (nome.isEmpty() || empresa.isEmpty() || salario.isEmpty()) {
+        if (nome.isEmpty() || empresa.isEmpty() || salario.isEmpty() || descricao.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos.");
         } else {
             controle.cadastrarVaga(nome, empresa, area, salario, horario, descricao);
@@ -1068,7 +1213,15 @@ public class PaginaInicial extends javax.swing.JFrame {
     }                                        
 
     private void VisualFiltroActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // TODO add your handling code here:
+        CardLayout troca = (CardLayout) painelPrincipal.getLayout();
+        String Id = IDFiltro.getText();
+        if (Id.equals("")) {
+            JOptionPane.showMessageDialog(this, "Por favor, preencha o ID.");
+        } else {
+            controle.carregaVagaPesquisada(Id, nomeVg, empresaVg, areaVg, salarioVg, turnoVg, descricaoVg);
+        }
+
+        troca.show(painelPrincipal, "card8");
     }                                            
 
     private void BotaoLupaActionPerformed(java.awt.event.ActionEvent evt) {                                          
@@ -1109,6 +1262,16 @@ public class PaginaInicial extends javax.swing.JFrame {
         // Chamar a função que carrega os dados filtrados na tabela
         controle.carregarVagasTabelaFiltrada(TableEdit, areaSelecionadaRmv, horarioSelecionadoRvm, valorSelecionadoRmv);
     }                                            
+
+    private void BotaoVoltarVgActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        CardLayout troca = (CardLayout) painelPrincipal.getLayout();
+        IDFiltro.setText("");
+        troca.show(painelPrincipal, "card3");
+    }                                             
+
+    private void SlcAreaActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+    }                                       
 
     /**
      * @param args the command line arguments
@@ -1164,6 +1327,7 @@ public class PaginaInicial extends javax.swing.JFrame {
     private javax.swing.JButton BotaoVoltarAdm;
     private javax.swing.JButton BotaoVoltarEdit;
     private javax.swing.JButton BotaoVoltarRmv;
+    private javax.swing.JButton BotaoVoltarVg;
     private javax.swing.JButton EditVg;
     private javax.swing.JComboBox<String> HorarioCad;
     private javax.swing.JTextField IDEdit;
@@ -1206,7 +1370,17 @@ public class PaginaInicial extends javax.swing.JFrame {
     private javax.swing.JTextArea TodasVagas;
     private javax.swing.JButton VisualFiltro;
     private javax.swing.JButton VisualVg;
+    private javax.swing.JTextField areaVg;
+    private javax.swing.JTextArea descricaoVg;
+    private javax.swing.JTextField empresaVg;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1215,6 +1389,7 @@ public class PaginaInicial extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel labelAreaEdt;
@@ -1226,12 +1401,16 @@ public class PaginaInicial extends javax.swing.JFrame {
     private javax.swing.JLabel labelTurnoEdt;
     private javax.swing.JLabel labelTurnoFiltro;
     private javax.swing.JLabel labelTurnoRvm;
+    private javax.swing.JTextField nomeVg;
     private javax.swing.JPanel paginaAdc;
     private javax.swing.JPanel paginaAdm;
     private javax.swing.JPanel paginaEdit;
     private javax.swing.JPanel paginaFiltro;
     private javax.swing.JPanel paginaPrincipal;
     private javax.swing.JPanel paginaRemove;
+    private javax.swing.JPanel paginaVagaPesquisada;
     private javax.swing.JPanel painelPrincipal;
+    private javax.swing.JTextField salarioVg;
+    private javax.swing.JTextField turnoVg;
     // End of variables declaration                   
 }
