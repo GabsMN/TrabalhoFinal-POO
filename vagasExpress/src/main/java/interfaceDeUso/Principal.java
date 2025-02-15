@@ -1,5 +1,6 @@
 package corpoPrograma;
 
+import interfaceDeUso.PaginaInicial;
 import java.awt.CardLayout;
 import java.awt.TextArea;
 import java.io.BufferedWriter;
@@ -12,6 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import java.io.*;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class Principal {
@@ -159,6 +161,28 @@ public class Principal {
                     }
                 }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void carregaVagaPesquisada(String Id, JTextField nomeVg, JTextField empresaVg, JTextField areaVg, JTextField salarioVg, JTextField turnoVg, JTextArea descricaoVg) {
+        try (BufferedReader leitor = new BufferedReader(new FileReader(nome_arquivo))) {
+            String linha;
+
+            while ((linha = leitor.readLine()) != null) {
+                String[] dados = linha.split(","); // Divide a linha pelas vírgulas de acordo como está sendo salvo no arquivo
+                if (dados.length >= 7 && dados[0].equals(Id)) {
+                    nomeVg.setText(dados[1]);
+                    empresaVg.setText(dados[2]);
+                    areaVg.setText(dados[3]);
+                    salarioVg.setText(dados[4]);
+                    turnoVg.setText(dados[5]);
+                    descricaoVg.setText(dados[6]);
+                    return;
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Vaga não encontrada!", "Erro", JOptionPane.ERROR_MESSAGE);
         } catch (IOException e) {
             e.printStackTrace();
         }
