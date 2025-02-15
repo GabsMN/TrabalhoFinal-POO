@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -1260,7 +1261,7 @@ public class PaginaInicial extends javax.swing.JFrame {
         String valorSelecionadoRmv = SlcValorRmv.getSelectedItem().toString();
 
         // Chamar a função que carrega os dados filtrados na tabela
-        controle.carregarVagasTabelaFiltrada(TableEdit, areaSelecionadaRmv, horarioSelecionadoRvm, valorSelecionadoRmv);
+        controle.carregarVagasTabelaFiltrada(TableRmv, areaSelecionadaRmv, horarioSelecionadoRvm, valorSelecionadoRmv);
     }                                            
 
     private void BotaoVoltarVgActionPerformed(java.awt.event.ActionEvent evt) {                                              
