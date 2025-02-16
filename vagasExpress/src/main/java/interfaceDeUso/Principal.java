@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import java.io.*;
+import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -88,7 +89,7 @@ public class Principal {
     public static void carregarVagasTabela(JTable tabela) {
         DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
         modelo.setRowCount(0); // Limpa a tabela antes de inserir os dados
-
+        
         try (BufferedReader leitor = new BufferedReader(new FileReader(nome_arquivo))) {
             String linha;
 
@@ -105,9 +106,9 @@ public class Principal {
 
     public static void carregarVagasTabelaFiltrada(JTable tabela, String area, String horario, String valor) {
         DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
-        modelo.setRowCount(0); // Limpa a tabela antes de inserir os dados
+        modelo.setRowCount(0); 
 
-        // Inicializa os valores mínimo e máximo de acordo com o intervalo selecionado
+   
         int valorMinimo = Integer.MIN_VALUE;
         int valorMaximo = Integer.MAX_VALUE;
 
@@ -187,4 +188,82 @@ public class Principal {
             e.printStackTrace();
         }
     }
-}
+    public void removerVagaPesquisada(String aux) {
+    File arquivo = new File(nome_arquivo);
+    ArrayList<String> linhas = new ArrayList<>();
+    
+    try (BufferedReader leitor = new BufferedReader(new FileReader(arquivo))) {
+        String linha;
+        boolean encontrado = false;
+
+        // Ler todo o conteúdo do arquivo e adicionar na lista
+        while ((linha = leitor.readLine()) != null) {
+            String[] dados = linha.split(",");
+            if (dados.length >= 7 && dados[0].equals(aux)) {
+                encontrado = true; // Encontramos a vaga que queremos remover
+                continue; // Ignorar a linha que queremos remover
+            }
+            linhas.add(linha); // Adiciona a linha que não deve ser removida
+        }
+
+        if (!encontrado) {
+            JOptionPane.showMessageDialog(null, "Vaga não encontrada!", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else {
+            // Reescrever o arquivo com as linhas restantes
+            try (BufferedWriter escritor = new BufferedWriter(new FileWriter(arquivo))) {
+                for (String linhaFinal : linhas) {
+                    escritor.write(linhaFinal);
+                    escritor.newLine();
+                }
+            }
+        }
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }}
+    
+    public void ajustarIDs() {
+    ArrayList<String> linhas = new ArrayList<>();
+    int novoID = 1; // O ID começa de 1
+
+    try (BufferedReader leitor = new BufferedReader(new FileReader(nome_arquivo))) {
+        String linha;
+        while ((linha = leitor.readLine()) != null) {
+            String[] dados = linha.split(",");
+            if (dados.length > 0) {
+                try {
+                    int idAtual = Integer.parseInt(dados[0]);
+
+                    // Verifica se os IDs estão contínuos. Caso contrário, ajusta
+                    if (idAtual >= novoID) {
+                        novoID = idAtual + 1; // Próximo ID será o maior encontrado + 1
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Erro ao converter ID: " + dados[0]);
+                }
+            }
+            linhas.add(linha); // Guarda todas as linhas do arquivo
+        }
+    } catch (IOException e) {
+        System.out.println("Arquivo ainda não criado. Começando com ID 1.");
+    }
+
+    // Ajusta o próximo ID de forma sequencial sem lacunas
+    int contadorID = 1; // Começa com o ID 1
+
+    // Reescreve os IDs de volta no arquivo, caso haja alguma lacuna
+    try (BufferedWriter escritor = new BufferedWriter(new FileWriter(nome_arquivo))) {
+        for (String linha : linhas) {
+            String[] dados = linha.split(",");
+            if (dados.length > 0) {
+                // Reformula os IDs de maneira contínua
+                dados[0] = String.valueOf(contadorID);
+                escritor.write(String.join(",", dados));
+                escritor.newLine();
+                contadorID++; // Incrementa o ID para o próximo
+            }
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}}
