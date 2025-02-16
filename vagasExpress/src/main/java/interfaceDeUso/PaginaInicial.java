@@ -1210,7 +1210,13 @@ public class PaginaInicial extends javax.swing.JFrame {
     }                                             
 
     private void RemoveVgActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+       String Aux = IDRmv.getText();
+       controle.removerVagaPesquisada(Aux);
+       IDRmv.setText(""); 
+       controle.ajustarIDs();
+       controle.carregarVagasTabela(TableRmv);
+        
+// TODO add your handling code here:
     }                                        
 
     private void VisualFiltroActionPerformed(java.awt.event.ActionEvent evt) {                                             
